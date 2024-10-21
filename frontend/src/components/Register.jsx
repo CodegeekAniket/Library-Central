@@ -17,7 +17,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://librarymanagementsystem-three.vercel.app/api/auth/register", {
+      const res = await axios.post(`https://librarymanagementsystem-three.vercel.app/api/auth/register`, {
         username,
         password,
         email,
