@@ -22,7 +22,7 @@ const UserDashboard = () => {
     const fetchIssuedBooks = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/user/issued-books",
+          `${process.env.REACT_APP_API_URL}/api/user/issued-books`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -39,7 +39,7 @@ const UserDashboard = () => {
   const handleReturnEbook = async (ebookId) => {
     try {
       await axios.post(
-        `http://localhost:5000/api/user/ebooks/${ebookId}/return`,
+        `${process.env.REACT_APP_API_URL}/api/user/ebooks/${ebookId}/return`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

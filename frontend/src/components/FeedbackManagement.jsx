@@ -32,7 +32,7 @@ const FeedbackManagement = () => {
     const fetchFeedbacks = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/librarian/feedbacks",
+          `${process.env.REACT_APP_API_URL}/api/librarian/feedbacks`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -58,7 +58,7 @@ const FeedbackManagement = () => {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/librarian/feedbacks/${selectedFeedback._id}`,
+        `${process.env.REACT_APP_API_URL}/api/librarian/feedbacks/${selectedFeedback._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

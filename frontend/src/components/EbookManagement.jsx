@@ -56,7 +56,7 @@ const EbookManagement = () => {
   useEffect(() => {
     const fetchEbooks = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/user/ebooks", {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/ebooks`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setEbooks(res.data);
@@ -68,7 +68,7 @@ const EbookManagement = () => {
 
     const fetchSections = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/user/sections", {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/sections`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSections(res.data);
@@ -108,11 +108,11 @@ const EbookManagement = () => {
 
   const addEbook = async () => {
     try {
-      await axios.post("http://localhost:5000/api/librarian/ebooks", newEbook, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/librarian/ebooks`, newEbook, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("E-book added successfully");
-      const res = await axios.get("http://localhost:5000/api/user/ebooks", {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/ebooks`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEbooks(res.data);
@@ -138,7 +138,7 @@ const EbookManagement = () => {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/librarian/ebooks/${selectedEbook._id}`,
+        `${process.env.REACT_APP_API_URL}/api/librarian/ebooks/${selectedEbook._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -164,7 +164,7 @@ const EbookManagement = () => {
   const updateEbook = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/librarian/ebooks/${editEbook._id}`,
+        `${process.env.REACT_APP_API_URL}/api/librarian/ebooks/${editEbook._id}`,
         editEbook,
         {
           headers: { Authorization: `Bearer ${token}` },

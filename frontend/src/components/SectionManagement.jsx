@@ -42,7 +42,7 @@ const SectionManagement = () => {
   useEffect(() => {
     const fetchSections = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/user/sections", {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/sections`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSections(res.data);
@@ -57,7 +57,7 @@ const SectionManagement = () => {
   const addSection = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/librarian/sections",
+        `${process.env.REACT_APP_API_URL}/api/librarian/sections`,
         newSection,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -81,7 +81,7 @@ const SectionManagement = () => {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/librarian/sections/${selectedSection._id}`,
+        `${process.env.REACT_APP_API_URL}/api/librarian/sections/${selectedSection._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -106,7 +106,7 @@ const SectionManagement = () => {
   const updateSection = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/librarian/sections/${editSection._id}`,
+        `${process.env.REACT_APP_API_URL}/api/librarian/sections/${editSection._id}`,
         editSection,
         {
           headers: { Authorization: `Bearer ${token}` },
